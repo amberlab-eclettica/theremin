@@ -11,8 +11,8 @@ Heavily inspired from the classic [Arduino example](https://projecthub.arduino.c
 - Real-time pitch control using a photoresistor
 - Automatic calibration on startup (adapts to ambient light)
 - Exponential smoothing to reduce noise and jitter
-- Linear pitch mapping (100 Hz – 1500 Hz)
-- Plays a short melody on startup/shutdown 🎵
+- Linear pitch mapping
+- Plays a short melody on startup/shutdown
 
 ---
 
@@ -34,17 +34,26 @@ Heavily inspired from the classic [Arduino example](https://projecthub.arduino.c
 
 ---
 
-## Installation & Usage
+## Installation
 
 1. Install [Arduino CLI](https://arduino.github.io/arduino-cli/latest/) or Arduino IDE.
 2. Clone this repository:
    ```bash
    git clone https://github.com/amberlab-eclettica/theremin.git
    cd theremin
-```
+   ```
 3. Compile and upload your repository to the arduino:
    ```bash
    make
    make upload
-```
-4. Cover/uncover the photoresistor with your hand to play the theremin.
+   ```
+   
+---
+
+## How To Use
+
+- **Startup melody**: On power-up, the theremin plays a short tune (familiar to some).  
+- **Calibration phase**: For the next **5 seconds**, the photoresistor automatically calibrates to the ambient light.  
+  > Move your hand over the theremin during this time to set the sensitivity range.  
+- **Ready to play**: After calibration, the melody plays again, signaling that the theremin is ready.  
+  Wave your hand over the sensor to control the pitch!
