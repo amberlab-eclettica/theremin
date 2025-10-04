@@ -14,7 +14,7 @@ int sensorLow = 1023;
 int sensorHigh = 0;
 
 // sound parameters
-const int maxPitch = 1500;
+const int maxPitch = 2000;
 const int minPitch = 100;
 
 float smoothValue = 0; 
@@ -98,14 +98,14 @@ void appLoop() {
   smoothValue = smoothing_parameter * smoothValue + (1-smoothing_parameter) * raw;
 
   // linear mapping
-  int pitch = map((int)smoothValue, sensorLow, sensorHigh, maxPitch, minPitch);
+  int pitch = map((int)smoothValue, sensorHigh, sensorLow, maxPitch, minPitch);
 
   // logatithmic mapping
   //float ratio = (float)(smoothValue - sensorLow) / (sensorHigh - sensorLow);
   //int pitch = 100 * pow(2, ratio * 5);  // da 100 Hz a 3200 Hz
 
 
-  if (smoothValue < 0.9 * sensorHigh) {
+  if (smoothValue > 0.9 * sensorLow) {
     tone(buzzerPin, pitch);
   } else {
     noTone(buzzerPin);
